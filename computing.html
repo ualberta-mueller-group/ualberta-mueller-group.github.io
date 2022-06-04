@@ -1,12 +1,46 @@
-Resources for new and current students
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="global.css">
+<title>Martin M&uuml;ller's Research Group - Computing Resources</title>
+</head>
 
-Information about Hardware and Software
+<body>
+<h1>Computing Resources</h1>
+<p>
+Resources for new and current students,
+Information about Hardware and Software, login etc.
+</p>
 
-Resources in our Group
+<h2>Resources in our Group</h2>
 
+<h3>Old CPU only machines</h3>
 Willingdon, Muriel etc.
 
-Cirrus
+<h3>Cirrus</h3>
+(last reviewed 6/2022)
+
+Cirrus is research computing infrastructure for Faculty of Science.
+It is part of Compute Canada but as "Tier 2" is managed locally by UofA.
+Our group owns a number of CPU, GPU and disk storage within Cirrus.
+
+<h4>Hardware and Access</h4>
+4 nodes,  <b>add details</b> CPU, GPU
+
+<pre>
+ssh mueller-node1.cirrus.ualberta.ca
+</pre>
+
+<ul>
+<li>
+<a href="https://spaces.facsci.ualberta.ca/cirrus/documentation/">Cirrus Documentation and OpenStack</a>
+(from 2018, not updated?)
+</li>
+<li>
+<a href="https://www.computecanada.ca/wp-content/uploads/2015/12/Quick-Start-Guide-to-Compute-Canada-Cloud-Service-FINAL-EN.pdf">Compute Canada Quick Start</a>
+</li>
+</ul>
 
 machines - account on cirrus:
 Martin can request to add you.
@@ -22,14 +56,30 @@ https://www.ualberta.ca/information-services-and-technology/services/uws-interne
 
 2) ssh into another computer on campus then ssh to the VMs aka a ssh jumphost.
 Computing Science has a number of computers that one can ssh into from off campus.
-The one that is specifically set aside for this is: innisfree.cs.ualberta.ca
+The one that is specifically set aside for this is: innisfree.cs.ualberta.ca
 
-Shared Resources
+<h4>Disk space on Cirrus</h4>
+Cirrus nodes have two kinds of disk:
+1. Fast, local "scratch" disk <b>check details</b>
+100 GB for each node? also holds OS?
+It is better to use this for computations that require lots of disk I/O. However, results and large files should then be move over to bulk storage,
+since this small disk is shared by all users in our group.
 
-Eureka Cluster at Amii (last reviewed 5/2022)
-Xeon CPU and 8 Nvidia GPU, shared with all of Amii
+2. Slower "bulk" disk mounted on \nfs (Network file system). Physically located on a different hardware node within the cirrus system. 2TB. As of 6/2022, about 1.5TB free. Shared between all nodes and users.
 
-https://docs.google.com/document/d/1Z9PZPeyHH1uxBUkvODf4f8yvHwG3CR3WPPTGX6zuM1k
-Info on hardware and access
 
-Compute Canada
+<h2>Shared Resources</h2>
+
+<ul>
+	<li>Eureka Cluster at Amii (last reviewed 5/2022)
+Xeon CPU and 8 Nvidia GPU, shared with all of Amii.
+<a href="https://docs.google.com/document/d/1Z9PZPeyHH1uxBUkvODf4f8yvHwG3CR3WPPTGX6zuM1k">Info on hardware and access</a>
+</li>
+
+	<li>Compute Canada</li>
+</ul>
+
+
+</body>
+</html>
+
