@@ -19,14 +19,28 @@ Information about Hardware and Software, login etc.
 Willingdon, Muriel etc.
 
 <h3>Cirrus</h3>
-(last reviewed 6/2022)
+(last reviewed 8/2022)
 
 Cirrus is research computing infrastructure for Faculty of Science.
 It is part of Compute Canada but as "Tier 2" is managed locally by UofA.
 Our group owns a number of CPU, GPU and disk storage within Cirrus.
 
 <h4>Hardware and Access</h4>
-4 nodes,  <b>add details</b> CPU, GPU
+<p>
+Our group owns 4 cirrus nodes. The idea is that nodes 2-4 can be used much like individual workstations, while node 1 can run larger or more compute-intensive or more parallel jobs.
+</p>
+<ul>
+<li>
+mueller-node1.cirrus.ualberta.ca - 10 CPU, 2 x TitanRTX GPU
+mueller-node2.cirrus.ualberta.ca - 5 CPU, 1 x 2080Ti GPU
+mueller-node3.cirrus.ualberta.ca - 5 CPU, 1 x 2080Ti GPU
+mueller-node4.cirrus.ualberta.ca - 5 CPU, 1 x 2080Ti GPU
+</li>
+</ul>
+
+<p>
+Nodes 2-4 are clones of node1, so they have the same login, passwords and the same NFS home directories.
+</p>
 
 <pre>
 ssh mueller-node1.cirrus.ualberta.ca
@@ -42,43 +56,73 @@ ssh mueller-node1.cirrus.ualberta.ca
 </li>
 </ul>
 
-machines - account on cirrus:
+<h4>Getting an account on cirrus</h4>
+<p>
 Martin can request to add you.
-Your Cirrus account will be initialized with the same user name and password as your ualberta password. However it is a separate system, so if you change one password it will not change on the other side.
+Your Cirrus account will be initialized with the same user name and password as your current ualberta CCID password. However Cirrus is a separate system, 
+so if you change one password it will not change the other.
+</p>
 
-access to cirrus:
+<h4>Accessing cirrus</h4>
+<p>
 The current rules restrict access from on campus.
+You can:
+</p>
 
-You can either:
-
-1) Use the campus VPN to get VPN into campus:
+<ol>
+<li>
+Use the campus VPN to get VPN into campus:
 https://www.ualberta.ca/information-services-and-technology/services/uws-internet-access/access-vpn.html
-
-2) ssh into another computer on campus then ssh to the VMs aka a ssh jumphost.
+</li>
+<li>
+ssh into another computer on campus then ssh to the VMs aka a ssh jumphost.
 Computing Science has a number of computers that one can ssh into from off campus.
 The one that is specifically set aside for this is: innisfree.cs.ualberta.ca
+</li>
+</ol>
 
 <h4>Disk space on Cirrus</h4>
 Cirrus nodes have two kinds of disk:
-1. Fast, local "scratch" disk <b>check details</b>
+<ol>
+<li>
+Fast, local "scratch" disk <b>check details</b>
 100 GB for each node? also holds OS?
 It is better to use this for computations that require lots of disk I/O. However, results and large files should then be move over to bulk storage,
 since this small disk is shared by all users in our group.
+</li>
 
-2. Slower "bulk" disk mounted on \nfs (Network file system). Physically located on a different hardware node within the cirrus system. 2TB. As of 6/2022, about 1.5TB free. Shared between all nodes and users.
+<li>
+Slower "bulk" disk mounted on \nfs (Network file system). Physically located on a different hardware node within the cirrus system. 2TB. As of 6/2022, about 1.5TB free. Shared between all nodes and users.
+</li>
+</ol>
 
 
 <h2>Shared Resources</h2>
 
 <ul>
-	<li>Eureka Cluster at Amii (last reviewed 5/2022)
+<li>Eureka Cluster at Amii (last reviewed 5/2022)
 Xeon CPU and 8 Nvidia GPU, shared with all of Amii.
 <a href="https://docs.google.com/document/d/1Z9PZPeyHH1uxBUkvODf4f8yvHwG3CR3WPPTGX6zuM1k">Info on hardware and access</a>
 </li>
 
-	<li>Compute Canada</li>
+<li>Compute Canada</li>
 </ul>
 
+<h2>Other Computing Resources</h2>
+ https://azure.microsoft.com/en-gb/free/students/, which gives you free access to machines with great GPUs
+
+<h2>Resources for your Own Use</h2>
+<p>Lab and office: each grad student is traditionally offered either a space in a (shared) office, or a space in a lab. Many students also prefer working from home. Some of my students are in the AI Lab (CSC 2-15).
+</p>
+<p>
+Computers: each of my graduate students should have a computer - either a laptop or a desktop machine in a lab. We can also loan you equipment for use at home, such as external monitor, keyboard, mouse.
+</p>
+<p>
+Any equipment that I buy with research funds is owned by the university 
+and must be returned at the end of your studies. 
+Please contact Karim Ali kali2@ualberta.ca about how to return it.
+Also, buying equipment is only possible for students that are physically in Edmonton. There may also be other options such as loaning equipment which I can explore.
+</p>
 
 </body>
 </html>
