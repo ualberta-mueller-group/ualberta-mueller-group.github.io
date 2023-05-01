@@ -26,7 +26,6 @@ Information about Hardware and Software, login etc.
 <h2>Resources in our Group</h2>
 <h3>Computer for Personal Use</h3>
 <p>
-<p>
 Each of my graduate students should have a computer - either a laptop or a desktop machine in a lab. While many bring their own device, we can also loan you equipment for use at home, such as laptop, external monitor, keyboard, mouse.
 </p>
 <p>
@@ -40,8 +39,7 @@ Also, buying equipment is only possible for students that are physically in Edmo
 </p>
 
 
-<h3>Old CPU only machines</h3>
-Willingdon, Muriel etc.
+
 
 <h3>Cirrus</h3>
 (last reviewed 8/2022)
@@ -54,20 +52,85 @@ Our group owns a number of CPU, GPU and disk storage within Cirrus.
 <p>
 Our group owns 4 cirrus nodes. The idea is that nodes 2-4 can be used much like individual workstations, while node 1 can run larger or more compute-intensive or more parallel jobs.
 </p>
+<p>
+Access: Talk to Martin to get an account.
+Once you have access:
+ssh mueller-node1.cirrus.ualberta.ca 
+</p>
+<p>
+Management: John B. manages this machine and will install stuff for us if we ask nicely. johnb@ualberta.ca, https://apps.ualberta.ca/directory/person/johnb
+(Martin maybe also has root access but he knows nothing about those things.)
+</p>
+
+
 <ul>
 <li>
-mueller-node1.cirrus.ualberta.ca - 10 CPU, 2 x TitanRTX GPU
+mueller-node1.cirrus.ualberta.ca - 10 CPU, 2 x TitanRTX GPU, 80GB RAM
 </li>
 <li>
-mueller-node2.cirrus.ualberta.ca - 5 CPU, 1 x 2080Ti GPU
+mueller-node2.cirrus.ualberta.ca - 5 CPU, 1 x 2080Ti GPU, 37.5GB RAM
 </li>
 <li>
-mueller-node3.cirrus.ualberta.ca - 5 CPU, 1 x 2080Ti GPU
+mueller-node3.cirrus.ualberta.ca - 5 CPU, 1 x 2080Ti GPU, 37.5GB RAM
 </li>
 <li>
-mueller-node4.cirrus.ualberta.ca - 5 CPU, 1 x 2080Ti GPU
+mueller-node4.cirrus.ualberta.ca - 5 CPU, 1 x 2080Ti GPU, 37.5GB RAM
 </li>
 </ul>
+
+<p>
+Note: on GPU memory is 24G each
+</p>
+
+<!--
+Note: Each CPU unit comes with 15 GB of RAM - where is the rest? Eaten up by the system???
+-->
+
+<h4>Disk space on Cirrus</h4>
+<p>
+Cirrus nodes have two kinds of disk:
+</p>
+
+<ol>
+<li>
+400GB CEPH storage (high performance storage units).
+It is better to use this for computations that require lots of disk I/O. However, results and large files should then be move over to bulk storage,
+since this small disk is shared by all users in our group.
+</li>
+
+<li>
+2 TB NFS storage (bulk storage)
+Currently this is where the home directory space is for all the user accounts.
+Slower "bulk" disk mounted on \nfs (Network file system). Physically located on a different hardware node within the cirrus system. 2TB. As of 6/2022, about 1.5TB free. Shared between all nodes and users.
+</li>
+</ol>
+
+
+<b>Docker and root user:</b>
+<p>
+(Information from John B.)
+root in this case are programs being run inside of docker containers.
+One way to find out who started those containers is to use the command
+</p>
+
+<pre>
+docker ps
+</pre>
+
+<p>
+But this is not a guaranteed way of finding out who is running the container
+as it relies on consistent image naming.
+
+A better way may be to look at the output of:
+</p>
+
+<pre>
+ps -ef | grep docker
+</pre>
+
+<p>
+and look at the users who started docker exec sessions.
+</p>
 
 <p>
 Nodes 2-4 are clones of node1, so they have the same login, passwords and the same NFS home directories.
@@ -112,37 +175,63 @@ The one that is specifically set aside for this is: innisfree.cs.ualberta.ca
 </li>
 </ol>
 
-<h4>Disk space on Cirrus</h4>
-Cirrus nodes have two kinds of disk:
-<ol>
-<li>
-Fast, local "scratch" disk <b>check details</b>
-100 GB for each node? also holds OS?
-It is better to use this for computations that require lots of disk I/O. However, results and large files should then be move over to bulk storage,
-since this small disk is shared by all users in our group.
-</li>
+<h3>Old CPU-only machines</h3>
+<p>
+These are not part of Cirrus.
+</p>
 
+<ul>
 <li>
-Slower "bulk" disk mounted on \nfs (Network file system). Physically located on a different hardware node within the cirrus system. 2TB. As of 6/2022, about 1.5TB free. Shared between all nodes and users.
+willingdon 8 core Intel Xeon E5420  @ 2.50GHz, 8GB memory, ca 2008?
 </li>
-</ol>
-
+<li>
+fire-creek 12 real cores (24 hyperthreaded) Intel Xeon X5670  @ 2.93GHz, 48GB memory, ca 2011?
+</li>
+<li>
+fire-point 16 real cores (32 hyperthreaded) Intel Xeon E5-2665 0 @ 2.40GHz, 64GB memory, ca 2013?
+</li>
+</ul>
+<p>
+Access: willingdon is on the regular CS network, managed by IST.
+fire-point and fire-creek:
+Access through chinook. Ask Martin for access.
+Need to ssh to chinook first, then ssh from chinook to the other machine.
+</p>
 
 <h2>Shared Resources</h2>
 
 <ul>
+<li>Compute Canada:
+Used by many of our students. Need to apply for an account under Martin's group number. Ask him for details. Renew each year.
+</li>
 <li>Eureka Cluster at Amii (last reviewed 5/2022)
-Xeon CPU and 8 Nvidia GPU, shared with all of Amii.
+Xeon CPU and 8 Nvidia GPU (older?), shared with all of Amii.
 <a href="https://docs.google.com/document/d/1Z9PZPeyHH1uxBUkvODf4f8yvHwG3CR3WPPTGX6zuM1k">Info on hardware and access</a>
 "available for general use - and it currently is not fully utilized"
 </li>
 
-<li>Compute Canada</li>
+<li>Future Amii "Pan Canadian AI Strategy hardware".
+This will come, but as of April 2023, there is "requirements gathering" but no concrete timeline. Maybe sometime in 2024.
+</li>
+
 </ul>
 
 <h2>Other Computing Resources</h2>
- https://azure.microsoft.com/en-gb/free/students/, which gives you free access to machines with great GPUs
+ https://azure.microsoft.com/en-gb/free/students/, which gives you free access to machines with great GPUs.
+ Amazon AWS, Microsoft Azure, Google cloud etc. Can buy spot instances, may get some free educational cycles.
 
+<!--
+<p>
+Muriel and muriel1 have been retired in 2023. 
+DEAD? muriel-c1: 16 core, older, 64GB memory. 
+gamebuilder 4x Intel Xeon E31220 @ 3.10GHz, 8GB, ca 2012?
+muriel, muriel1 8x Intel Xeon E5420  @ 2.50GHz, 12GB, ca 2008?
+muriel-c1 16x 2.7GHz AMD, 64GB memory
+- mulhurst: iMac, 4 core, 16GB, 4 GHz Intel Core i7, 2014. AMD Radeon R9 M290X. In Martin's office. Ask Martin for access.
+
+</p>
+
+-->
 
 </body>
 </html>
